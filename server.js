@@ -11,10 +11,15 @@ app.use(bodyParser.json());
 
 const corsOptions = {
     origin: 'https://stock-inventory-tracker-fe.vercel.app',
-    optionsSuccessStatus: 200 // Some legacy browsers (IE11, various SmartTVs) choke on 204
+    optionsSuccessStatus: 200,
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    preflightContinue: false
 };
 
 app.use(cors(corsOptions));
+
+// Handle preflight requests
+app.options('*', cors(corsOptions));
 
 
 // Database connection
