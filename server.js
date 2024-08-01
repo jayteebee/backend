@@ -7,7 +7,15 @@ const app = express();
 
 // Middleware
 app.use(bodyParser.json());
-app.use(cors());
+
+
+const corsOptions = {
+    origin: 'https://stock-inventory-tracker-fe.vercel.app',
+    optionsSuccessStatus: 200 // Some legacy browsers (IE11, various SmartTVs) choke on 204
+};
+
+app.use(cors(corsOptions));
+
 
 // Database connection
 // Database connection
